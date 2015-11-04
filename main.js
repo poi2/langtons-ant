@@ -38,8 +38,11 @@ window.onload = function(){
   // create ant
   // dir: ant's direction
   // row, col: ant's position
-  var ant = {'dir': 0, 'row': CELL_LENGTH/2 - 1, 'col': CELL_LENGTH/2 - 1};
-  simulateLangtonAnt(field, ant);
+  var dis = 10;
+  var ant = {'dir': 0, 'row': CELL_LENGTH/2 - dis, 'col': CELL_LENGTH/2 - dis};
+  var spider = {'dir': 2, 'row': CELL_LENGTH/2 + dis, 'col': CELL_LENGTH/2 + dis};
+  simulateLangtonAnt(field, ant, 'skyblue');
+  simulateLangtonAnt(field, spider, 'green');
 };
 
 // RULE
@@ -50,7 +53,7 @@ window.onload = function(){
 // https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%82%B0%E3%83%88%E3%83%B3%E3%81%AE%E3%82%A2%E3%83%AA
 // https://en.wikipedia.org/wiki/Langton%27s_ant
 
-function simulateLangtonAnt(field, ant){
+function simulateLangtonAnt(field, ant, color){
   // check color
   // turn ant direction and set color
   if(field[ant.row][ant.col]){
@@ -60,7 +63,7 @@ function simulateLangtonAnt(field, ant){
   }else{
     // ant on black block
     ant.dir += 1;
-    context.fillStyle = 'skyblue';
+    context.fillStyle = color;
   }
 
   // reverse block color at ant
@@ -72,7 +75,6 @@ function simulateLangtonAnt(field, ant){
 
   // fix direction
   ant.dir = (ant.dir+4) % 4;
-  // ant.dir = Math.abs(ant.dir % 4);
 
   // move ant
   ant.row += dirs[ant.dir].row;
