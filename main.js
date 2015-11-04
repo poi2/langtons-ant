@@ -88,6 +88,7 @@ function simulateLangtonAnt(field, ant, color){
   if( ant.row < 0 || ant.col < 0 || ant.row >= CELL_LENGTH || ant.col >= CELL_LENGTH ){
     alert('finish');
   }else{
-    setTimeout(simulateLangtonAnt, TIMELAG, field, ant);
+    setTimeout(simulateLangtonAnt, TIMELAG, field, ant, color);
+    // simulateLangtonAnt(field, ant, color);
   }
 }
